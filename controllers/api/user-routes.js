@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Post } = require('../../models');
 
-// GET /api/users
+// GET all users
 router.get('/', (req, res) => {
     User.findAll({
         attributes: { exclude: ['password'] }
@@ -60,9 +60,15 @@ router.post('/', (req, res) => {
           res.json(dbUserData);
         });
       })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 });
 
 router.post('/login', (req, res) => {
+    // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+
     User.findOne({
       where: {
         email: req.body.email
@@ -88,6 +94,17 @@ router.post('/login', (req, res) => {
         res.json({ user: dbUserData, message: 'You are now logged in!' });
       });
     });
+  });
+
+  router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    }
+    else {
+      res.status(404).end();
+    }
   });
 
 module.exports = router;

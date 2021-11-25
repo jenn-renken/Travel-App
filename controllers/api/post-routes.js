@@ -13,20 +13,29 @@ router.get('/', (req, res) => {
       'title',
       'created_at'
     ],
-    order: [['created_at', 'DESC']],
- attributes: [
-   'id',
-   'post_url',
-   'title',
-   'created_at'
- ]
-})
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+  .then(dbPostData => res.json(dbPostData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
+
+//     order: [['created_at', 'DESC']],
+//  attributes: [
+//    'id',
+//    'post_url',
+//    'title',
+//    'created_at'
+//  ]
+// })
+
 
 router.get('/:id', (req, res) => {
   Post.findOne({
@@ -38,7 +47,19 @@ router.get('/:id', (req, res) => {
       'post_url',
       'title',
       'created_at'
-    ]
+    ],
+    include: [
+      {
+      include: {
+        model: User,
+        attributes: ['username']
+      }
+    },
+    {
+      model: User,
+      attributes: ['username']
+    }
+  ]
   })
     .then(dbPostData => {
       if (!dbPostData) {
