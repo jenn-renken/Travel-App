@@ -2,6 +2,17 @@
   {{#each posts as |post|}}
   <li>
     {{post.title}}
+    <br>
+    location: {{post.location}}
   </li>
   {{/each}}
 </ol>
+
+<article class="post">
+  <div class="title">
+    <span>{{location}}</span>
+  </div>
+  <div class="meta">
+    {{!-- by {{user.username}} on {{created_at}} --}}
+  </div>
+</article>
