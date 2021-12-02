@@ -2,25 +2,32 @@ const { Post } = require('../models');
 
 const postdata = [
   {
-    title: 'Donec posuere metus vitae ipsum.',
+    title: 'A Parisian Adventure',
     user_id: 1,
     location:'Paris',
     cost: 4000,
-    description: 'this is a test'
+    description: 'Visited Louvre, Versailles, and ate lots of good food!'
   },
   {
-    title: 'Morbi non quam nec dui luctus rutrum.',
+    title: 'Oktoberfest in Berlin',
     user_id: 2,
     location:'Berlin',
-    cost: 4000,
-    description: 'this is a test'
+    cost: 2500,
+    description: 'Attended Oktoberfest festitivies and drank lots of delicious beer and ate pretzels!'
   },
   {
-    title: 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.',
+    title: 'Looking for the Queen in London',
     user_id: 3,
-    location:'london',
-    cost: 4000,
-    description: 'this is a test'
+    location:'London',
+    cost: 5000,
+    description: 'Went to Harrods, Buckingham Palace, and the National Gallery.'
+  },
+  {
+    title: 'Italian Food and Art Tour',
+    user_id: 4,
+    location:'Florence',
+    cost: 4500,
+    description: 'Saw all the best sights in Florence such as the Duomo and Uffizi, plus ate tons of delicious food and drank the best wine.'
   }
  
 ];

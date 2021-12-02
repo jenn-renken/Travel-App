@@ -6,9 +6,15 @@ const { Post, User } = require('../models');
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
-   
-    include: [
-     
+     attributes: [
+       'id',
+       'title',
+       'location',
+       'cost',
+       'description',
+       'created_at'
+     ],
+     include: [
       {
         model: User,
         attributes: ['username']
@@ -35,7 +41,14 @@ router.get('/post/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    
+    attributes: [
+      'id',
+      'title',
+      'location',
+      'cost',
+      'description',
+      'created_at'
+    ],
     include: [
      
       {
@@ -63,13 +76,13 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
+// router.get('/login', (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect('/');
+//     return;
+//   }
 
-  res.render('login');
-});
+//   res.render('login');
+// });
 
 module.exports = router;

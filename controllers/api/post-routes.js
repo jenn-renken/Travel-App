@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
       'title',
       'location',
       'cost',
-      'description'
+      'description',
+      'created_at'
     ],
     include: [
       {
@@ -45,8 +46,10 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'post_url',
       'title',
+      'location',
+      'cost',
+      'description',
       'created_at'
     ],
     include: [
@@ -75,11 +78,13 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
   Post.create({
     title: req.body.title,
-    post_url: req.body.post_url,
-    user_id: req.session.user_id
+    location: req.body.location,
+    cost: req.body.cost,
+    description: req.body.description,
+    user_id: req.body.user_id
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
