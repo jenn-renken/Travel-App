@@ -1,12 +1,40 @@
-<ol class="post-list">
-  {{#each posts as |post|}}
-  <li>
-    {{post.title}}
-    <br>
-    location: {{post.location}}
-  </li>
-  {{/each}}
-</ol>
+{{#each posts as |post|}}
+<div class="card">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">{{post.title}}</p>
+        <p class="subtitle is-6">by {{post.user.username}}</p>
+      </div>
+    </div>
+    <div class="content">
+      <ol class="post-list">
+        
+        <li>
+          Location: {{post.location}}
+          <br>
+          Cost: ${{post.cost}}
+          <br>
+          Description: {{post.description}}
+        </li>
+       
+      <br>
+       <div class="meta">{{format_date post.created_at}}</div>
+    </div>
+  </div>
+  <div class="card">
+  <footer class="card-footer">
+    <a href="#" class="card-footer-item">Edit</a>
+    <a href="#" class="card-footer-item">Delete</a>
+  </footer>
+</div>
+</div>
+{{/each}}
 
 <article class="post">
   <div class="title">
@@ -16,3 +44,37 @@
     {{!-- by {{user.username}} on {{created_at}} --}}
   </div>
 </article>
+
+<section>
+<p class="subtitle is-4">Create New Post</p>
+  <form class="new-post-form">
+    <div>
+     <input name="post-title" class="input is-primary" type="text" placeholder="Post Title">
+    </div>
+    <div>
+      <input name="post-location" class="input is-primary" type="text" placeholder="Travel Location">
+    </div>
+    <div>
+      <input name="post-cost" class="input is-primary" type="text" placeholder="Cost of Trip">
+    </div>
+    <div>
+      <textarea name="post-description" class="textarea is-primary" placeholder="Trip Description"></textarea>
+    </div>
+    <button class="button is-link">Create</button>
+  </form>
+</section>
+
+{{#if posts.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ol>
+    {{#each posts as |post|}}
+    <li>
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+<script src="/javascript/add-post.js"></script>

@@ -24,10 +24,6 @@ router.get('/:id', (req, res) => {
             {
               model: Post,
               attributes: ['id', 'title', 'location', 'cost', 'description', 'created_at']
-            },
-            {
-                model: Post,
-                attributes: ['title']
             }
         ]
     })
