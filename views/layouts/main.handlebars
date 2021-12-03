@@ -5,24 +5,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Experience</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
   <div class="wrapper">
     <header>
-      <h1>
-        <a href="/">Travel Experience</a>
-      </h1>
-      <nav>
-        {{!-- {{#if loggedIn}} --}}
-          <button id="logout" class="btn-no-style">logout</button>
-          {{!-- {{else}} --}}
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          {{!-- <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+          </a> --}}
 
-          <a href="login">login</a>
-          {{!-- {{/if}} --}}
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              Home
+            </a>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary">
+                  <strong>Sign up</strong>
+                </a>
+                <a class="button is-light">
+                  Log in
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
+
+     <section class="hero is-small is-link">
+  <div class="hero-body">
+    <p class="title">
+      Travel Experience Tracker
+    </p>
+    <p class="subtitle">
+      Share your travels!
+    </p>
+  </div>
+</section>
+
     <main>
       {{{ body }}}
     </main>
@@ -31,10 +68,19 @@
     </footer>
   </div>
 
-{{#if loggedIn}}
+{{!-- {{#if loggedIn}}
 <script src="/javascript/logout.js"></script>
-{{/if}}
+{{/if}} --}}
   
 </body>
 
 </html>
+
+
+ {{!-- <nav>
+        {{#if loggedIn}}
+          <button id="logout" class="btn-no-style">logout</button>
+          {{else}}
+          <a href="login">login</a>
+          {{/if}}
+      </nav> --}}
