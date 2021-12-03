@@ -5,6 +5,27 @@
   ol li {
     list-style: none;
   }
+
+  .hero-bg {
+    position: relative;
+    background: none !important;
+    text-shadow: 2px 2px #313030;
+  }
+
+  .hero-bg::before {
+    content: "";
+    z-index: -1;
+    background-image: url(/luca-bravo-O453M2Liufs-unsplash.jpg);
+    background-size: 100%, contain;
+    background-position: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+  }
+
   
   body, html {
     height: 100%;
@@ -143,6 +164,10 @@
   
   .edit-post-form {
     margin-bottom: 5%;
+  }
+
+  #back-home {
+    margin-bottom: 20px;
   }
   
   footer {

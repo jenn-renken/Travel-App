@@ -29,4 +29,27 @@ async function editFormHandler(event) {
     }
 }
 
+async function deleteFormHandler(event) {
+    event.preventDefault();
+    if (!confirm('Are you sure you want to delete this post?')) {
+        return
+    }
+    const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
+
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        document.location.replace('/');
+    } else {
+        alert(response.statusText);
+    }
+}
+
 document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
+
+document.querySelector('.delete-post-btn').addEventListener('click', deleteFormHandler);
+

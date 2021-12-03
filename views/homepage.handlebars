@@ -1,5 +1,5 @@
 {{#each posts as |post|}}
-<div class="card">
+<div class="card mb-6">
   <div class="card-content">
     <div class="media">
       <div class="media-left">
@@ -8,7 +8,7 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-3 has-text-link">{{post.title}}</p>
+        <p class="title is-3 has-text-link-dark">{{post.title}}</p>
         <p class="subtitle is-5 has-text-primary">by {{post.user.username}}</p>
       </div>
     </div>
@@ -27,12 +27,9 @@
        <div class="meta has-text-primary">Created on: {{format_date post.created_at}}</div>
     </div>
   </div>
-  <div class="card">
   <footer class="card-footer">
-    <a href="#" class="card-footer-item button is-link is-outlined">Edit</a>
-    <a href="#" class="card-footer-item button is-link is-outlined">Delete</a>
+    <a href="/post/{{post.id}}" class="card-footer-item button is-link is-outlined">Edit</a>
   </footer>
-</div>
 </div>
 {{/each}}
 
@@ -46,7 +43,7 @@
 </article>
 
 <section>
-<p class="title is-4 has-text-link">Create New Post</p>
+<p class="title is-4 has-text-link-dark">Create New Post</p>
   <form class="new-post-form">
     <div>
      <input name="post-title" class="input is-primary" type="text" placeholder="Post Title">
@@ -64,19 +61,4 @@
   </form>
 </section>
 
-{{#if posts.length}}
-<section>
-  <h2>Your Posts</h2>
-  <ol>
-    {{#each posts as |post|}}
-    <li>
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
-
-<script src="/javascript/add-post.js"></script>
-<script src="/javascript/edit-post.js"></script>
-{{!-- <script src="javacript/delete-post.js"></script> --}}
+<script src="/javascript/homepage.js"></script>

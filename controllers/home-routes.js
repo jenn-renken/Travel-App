@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// get single post
+// edit post
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -62,7 +62,7 @@ router.get('/post/:id', (req, res) => {
 
       const post = dbPostData.get({ plain: true });
 
-      res.render('single-post', { post });
+      res.render('edit-post', { post });
     })
     .catch(err => {
       console.log(err);
