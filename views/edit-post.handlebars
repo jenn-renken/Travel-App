@@ -1,16 +1,25 @@
 <article>
-  <a href="/"> &larr; Back to dashboard</a>
-  <h2>
+  <div id="back-home">
+    <a href="/" class="title is-6 has-text-primary"> &larr; Back Home</a>
+  </div>
+  <h2 class="title is-5 has-text-link">
     Edit Post
   </h2>
   <form class="edit-post-form">
     <div>
-      <input name="post-title" type="text" value="{{post.title}}" />
-      <input name="post-location" type="text" value="{{post.location}}" />
-      <input name="post-cost" type="text" value="{{post.cost}}" />
-      <input name="post-description" type="text" value="{{post.description}}" />
-    <button type="submit">Save post</button>
-    <button type="button" class="delete-post-btn">Delete post</button>
+      <input name="post-title" class="input is-link" type="text" value="{{post.title}}" />
+    </div>
+    <div>
+      <input name="post-location" class="input is-link" type="text" value="{{post.location}}" />
+    </div>
+    <div>
+      <input name="post-cost" class="input is-link" type="text" value="{{post.cost}}" />
+    </div>
+    <div>
+      <input name="post-description" class="input is-link"type="text" value="{{post.description}}" />
+    </div>
+    <button class="button is-primary" type="submit">Save post</button>
+    <button class="button is-danger" type="button" class="delete-post-btn">Delete post</button>
   </form>
 </article>
 
