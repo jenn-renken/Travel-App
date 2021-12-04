@@ -3,9 +3,6 @@
   <div class="card-content">
     <div class="media">
       <div class="media-left">
-        {{!-- <figure class="image is-48x48"> --}}
-          {{!-- <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"> --}}
-        </figure>
       </div>
       <div class="media-content">
         <p class="title is-3 has-text-link-dark">{{post.title}}</p>
@@ -27,9 +24,11 @@
        <div class="meta has-text-primary">Created on: {{format_date post.created_at}}</div>
     </div>
   </div>
+  {{#if isMine}}
   <footer class="card-footer">
     <a href="/post/{{post.id}}" class="card-footer-item button is-link is-outlined">Edit</a>
   </footer>
+  {{/if}}
 </div>
 {{/each}}
 
@@ -42,6 +41,7 @@
   </div>
 </article>
 
+{{#if loggedIn}}
 <section>
 <p class="title is-4 has-text-link-dark">Create New Post</p>
   <form class="new-post-form">
@@ -60,5 +60,6 @@
     <button class="button is-link">Create</button>
   </form>
 </section>
+{{/if}}
 
 <script src="/javascript/homepage.js"></script>

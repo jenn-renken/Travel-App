@@ -1,86 +1,80 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Experience</title>
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Experience</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
 
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a href="/" class="navbar-item">
-              Home
-            </a>
-            <a href="/" class="navbar-item">
-            logout
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
             </a>
           </div>
 
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a href="/login" class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a href="/login" class="button is-light">
-                  Log in
-                </a>
-              </div>
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
             </div>
+            <div class="navbar-item">
+              <a href="/" class="button is-primary">
+                Home
+              </a>
+            </div>
+            {{#if loggedIn}}
+            <div class="navbar-item">
+              <button id="logout" class="button is-light">Logout</button>
+            </div>
+            {{else}}
+            <div class="navbar-item">
+              <a href="/login" class="button is-primary">
+                <strong>Login or Sign up</strong>
+              </a>
+            </div>
+            
+            {{/if}}
+            <div class="navbar-end"></div>
           </div>
+        </nav>
+      </header>
+
+      <section class="hero hero-bg is-medium is-link">
+        <div class="hero-body">
+          <p class="title">
+            Travel Experience Tracker
+          </p>
+          <p class="subtitle">
+            Share your travels!
+          </p>
         </div>
-      </nav>
-    </header>
+      </section>
 
-<section class="hero hero-bg is-medium is-link">
-  <div class="hero-body">
-    <p class="title">
-      Travel Experience Tracker
-    </p>
-    <p class="subtitle">
-      Share your travels!
-    </p>
-  </div>
-</section>
-
-    <main>
-      {{{ body }}}
-    </main>
-    <footer class="has-text-link">
-      Happy Travels!
-    </footer>
-  </div>
-
-{{#if loggedIn}}
-<script src="/javascript/logout.js"></script>
-{{/if}}
-  
-</body>
-
+      <main>
+        {{{body}}}
+      </main>
+      <footer class="has-text-link">
+        Happy Travels!
+      </footer>
+    </div>
+  </body>
 </html>
 
-
- {{!-- <nav>
-        {{#if loggedIn}}
-          <button id="logout" class="btn-no-style">logout</button>
-          {{else}}
-          <a href="login">login</a>
-          {{/if}}
-      </nav> --}}
+<script src="/javascript/logout.js"></script>
