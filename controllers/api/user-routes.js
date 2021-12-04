@@ -63,8 +63,6 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    // expects {email: 'lernantino@gmail.com', password: 'password1234'}
-
     User.findOne({
       where: {
         email: req.body.email
@@ -87,7 +85,8 @@ router.post('/login', (req, res) => {
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
     
-        res.json({ user: dbUserData, message: 'You are now logged in!' });
+        // res.json({ user: dbUserData, message: 'You are now logged in!' });
+        res.redirect("/")
       });
     });
   });
@@ -99,7 +98,8 @@ router.post('/login', (req, res) => {
       });
     }
     else {
-      res.status(404).end();
+      // res.status(404).end();
+      res.redirect("/");
     }
   });
 

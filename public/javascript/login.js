@@ -1,13 +1,12 @@
 async function signupFormHandler(event) {
     event.preventDefault();
   
-    // const username = document.querySelector('#username-signup').value.trim();
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
   
     if (username && email && password) {
-     const response = await fetch('/api/users', {
+     const response = await fetch('api/users', {
         method: 'post',
         body: JSON.stringify({
           username,
@@ -18,7 +17,7 @@ async function signupFormHandler(event) {
       });
       
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/login');
       } else {
         alert(response.statusText);
       }
@@ -27,28 +26,25 @@ async function signupFormHandler(event) {
   
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 
-async function loginFormHandler(event) {
-    event.preventDefault();
-  
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-  
-    if (email && password) {
-      const response = await fetch('/api/users/login', {
-        method: 'post',
-        body: JSON.stringify({
-          email,
-          password
-        }),
-        headers: { 'Content-Type': 'application/json' }
-      });
+const loginFormHandler = async function(event) {
+  event.preventDefault();
 
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert(response.statusText);
-      }
-    }
-  }
-  
-  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+  const email = document.querySelector("#email-login");
+  const password = document.querySelector("#password-login");
+  fetch("/api/users/login", {
+    method: "post",
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value
+    }),
+    headers: { "Content-Type": "application/json" }
+  })
+    .then(function() {
+      document.location.replace("/");
+    })
+    .catch(err => console.log(err));
+};
+
+document
+  .querySelector("#login-form")
+  .addEventListener("submit", loginFormHandler);
