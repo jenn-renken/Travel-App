@@ -1,8 +1,23 @@
 # Travel-App
 
-AS A person looking for A Travel-App to get some information about my Location trip, Cost, and Describtion 
+The application is meant to be a travel blog that people can sign up for and post their experiences. Others can then view the experiences and decide if they would like to travel to the same location.Users can post pertinent information like food and activity recommendations, as well as safety information. 
 
-Whith create an account I am able to share my experiance about my specific trip or update my personal post or even delet my post
+# Use
+The user must create an account in order to post/edit/delete. Anyone can view the posts as read-only without signing in.
+
+# Deployed Application URL
+https://stormy-sea-06466.herokuapp.com/
+
+# Technologies
+- Node.js
+- Express.js
+- Sequelize
+- Mysql2
+- Bcrypt
+- Express Handlebars
+- .env 
+- Bulma (CSS framework)
+- jawsDB
 
 # Acceptance Criteria
 
@@ -30,13 +45,4 @@ Whith create an account I am able to share my experiance about my specific trip 
 
 * Protect API keys and sensitive information with environment variables
 
-# User
-The user whithout creatting an account able to see the posts for many people and
-gets some information about different Location for trip, Cost, and Describtion.
 
-The user able to creatting an account to post and update or delete personal post.
-
-
-# Deployed Application URL
-
-# Mock-Up
