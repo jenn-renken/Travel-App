@@ -1,92 +1,93 @@
-const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { Post, User } = require('../models');
+const router = require("express").Router();
+const session = require("express-session");
+const sequelize = require("../config/connection");
+const { Post, User } = require("../models");
 
 // get all posts for homepage
-router.get('/', (req, res) => {
-  console.log('======================');
+router.get("/", (req, res) => {
+  console.log("======================");
   Post.findAll({
-     attributes: [
-       'id',
-       'title',
-       'location',
-       'cost',
-       'description',
-       'created_at'
-     ],
-     include: [
+    attributes: [
+      "id",
+      "title",
+      "location",
+      "cost",
+      "description",
+      "created_at",
+    ],
+    include: [
       {
         model: User,
-        attributes: ['username']
-      }
-    ]
+        attributes: ["username"],
+      },
+    ],
   })
-    .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
-      posts.forEach(p => {
+    .then((dbPostData) => {
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      posts.forEach((p) => {
+        console.log(p);
         if (req.session.loggedIn) {
           if (p.user.username === req.session.username) {
-            p.isMine=true;
+            p.isMine = true;
           }
+        } else {
+          p.isMine = false;
         }
-        else {
-          p.isMine=false;
-        }
-      })
-      res.render('homepage', { posts, loggedIn: req.session.loggedIn }); 
-      })
-    .catch(err => {
+      });
+      res.render("homepage", { posts, loggedIn: req.session.loggedIn });
+    })
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 // edit post
-router.get('/post/:id', (req, res) => {
+router.get("/post/:id", (req, res) => {
   Post.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     attributes: [
-      'id',
-      'title',
-      'location',
-      'cost',
-      'description',
-      'created_at'
+      "id",
+      "title",
+      "location",
+      "cost",
+      "description",
+      "created_at",
     ],
     include: [
-     
       {
         model: User,
-        attributes: ['username']
-      }
-    ]
+        attributes: ["username"],
+      },
+    ],
   })
-    .then(dbPostData => {
+    .then((dbPostData) => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: "No post found with this id" });
         return;
       }
 
       const post = dbPostData.get({ plain: true });
-      
-      res.render('edit-post', { post, loggedIn: req.session.loggedIn });
+
+      res.render("edit-post", { post, loggedIn: req.session.loggedIn });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 // login routes
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
+
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
 
-  res.render('login');
+  res.render("login");
 });
 
 // router.post('/login', (req, res) => {
@@ -111,7 +112,7 @@ router.get('/login', (req, res) => {
 //       req.session.user_id = dbUserData.id;
 //       req.session.username = dbUserData.username;
 //       req.session.loggedIn = true;
-  
+
 //       res.json({ user: dbUserData, message: 'You are now logged in!' });
 //     });
 //   });
