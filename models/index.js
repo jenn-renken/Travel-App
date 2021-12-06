@@ -1,5 +1,5 @@
-const Post = require('./Post');
-const User = require('./User');
+const Post = require('./post');
+const User = require('./user');
 
 // create associations
 User.hasMany(Post, {
@@ -9,13 +9,5 @@ User.hasMany(Post, {
 Post.belongsTo(User, {
   foreignKey: 'user_id'
 });
-
-// User.belongsToMany(Post, {
-//   foreignKey: 'user_id'
-// });
-
-// Post.belongsToMany(User, {
-//   foreignKey: 'post_id'
-// });
 
 module.exports = { User, Post };
